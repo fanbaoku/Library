@@ -6,8 +6,6 @@ import android.util.Log;
 
 import com.android.mvp.library.utils.DataUtil;
 import com.android.mvp.library.utils.LogUtil;
-import com.android.mvp.library.utils.UIUtils;
-import com.readystatesoftware.chuck.ChuckInterceptor;
 
 import java.io.File;
 import java.io.IOException;
@@ -102,7 +100,6 @@ public class RequestUtil {
     private OkHttpClient getInstanceOkHttpClient() {
         if (mOkHttpClient == null) {
             OkHttpClient.Builder builder = new OkHttpClient.Builder()
-                    .addInterceptor(new ChuckInterceptor(UIUtils.getContext()))
                     .connectTimeout(15, TimeUnit.SECONDS)
                     .writeTimeout(20, TimeUnit.SECONDS)
                     .readTimeout(20, TimeUnit.SECONDS);
