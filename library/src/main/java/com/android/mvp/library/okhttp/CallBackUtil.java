@@ -9,6 +9,7 @@ import android.text.TextUtils;
 import android.widget.ImageView;
 
 import com.android.mvp.library.base.BaseBean;
+import com.android.mvp.library.utils.Base64Util;
 import com.android.mvp.library.utils.LogUtil;
 import com.google.gson.Gson;
 import com.google.gson.JsonSyntaxException;
@@ -65,7 +66,7 @@ public abstract class CallBackUtil<B> {
         Type[] arr = ((ParameterizedType) type).getActualTypeArguments();
         clazz = (Class) arr[0];
         try {
-            String result = response.body().string();
+            String result = Base64Util.decode(response.body().string());
 
             LogUtil.e("result-->" + result);
             Gson gson = new Gson();

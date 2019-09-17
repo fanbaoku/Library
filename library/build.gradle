@@ -31,16 +31,15 @@ android {
 }
 
 dependencies {
-    api fileTree(dir: 'libs', include: ['*.jar'])
-
+    api fileTree(include: ['*.jar'], dir: 'libs')
     api 'androidx.appcompat:appcompat:1.1.0'
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test:runner:1.2.0'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
     api 'com.squareup.okhttp3:okhttp:3.10.0'
-
     api 'com.github.anzewei:parallaxbacklayout:1.1.9'
     api 'com.google.code.gson:gson:2.8.0'
     api 'com.jakewharton:butterknife:10.2.0'
     annotationProcessor 'com.jakewharton:butterknife-compiler:10.2.0'
+    implementation files('libs/commons-codec-1.12.jar')
 }
