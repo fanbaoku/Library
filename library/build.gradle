@@ -39,7 +39,7 @@ dependencies {
     api 'com.squareup.okhttp3:okhttp:3.10.0'
     api 'com.github.anzewei:parallaxbacklayout:1.1.9'
     api 'com.google.code.gson:gson:2.8.0'
-    api 'com.jakewharton:butterknife:10.2.0'
-    annotationProcessor 'com.jakewharton:butterknife-compiler:10.2.0'
+//    api 'com.jakewharton:butterknife:10.2.0'
+//    annotationProcessor 'com.jakewharton:butterknife-compiler:10.2.0'
     implementation files('libs/commons-codec-1.12.jar')
 }

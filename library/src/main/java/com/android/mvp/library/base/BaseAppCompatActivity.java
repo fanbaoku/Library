@@ -13,7 +13,7 @@ import com.github.anzewei.parallaxbacklayout.widget.ParallaxBackLayout;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
-import butterknife.ButterKnife;
+//import butterknife.ButterKnife;
 
 import static com.github.anzewei.parallaxbacklayout.widget.ParallaxBackLayout.EDGE_MODE_DEFAULT;
 
@@ -31,7 +31,7 @@ public abstract class BaseAppCompatActivity<I, P extends BasePresenter<I>> exten
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(getLayoutId());
-        ButterKnife.bind(this);
+//        ButterKnife.bind(this);
         init();
         setListener();
         layout = ParallaxHelper.getParallaxBackLayout(this, true);
