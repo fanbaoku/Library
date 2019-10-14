@@ -67,7 +67,6 @@ public abstract class CallBackUtil<B> {
         clazz = (Class) arr[0];
         try {
             String result = Base64Util.decode(response.body().string());
-
             LogUtil.e("result-->" + result);
             Gson gson = new Gson();
             final BaseBean baseBean = gson.fromJson(result, BaseBean.class);

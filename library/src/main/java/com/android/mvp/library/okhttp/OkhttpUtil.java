@@ -1,6 +1,16 @@
 package com.android.mvp.library.okhttp;
 
+import android.util.Log;
+
+import com.android.mvp.library.utils.Base64Util;
+import com.android.mvp.library.utils.LogUtil;
+
+import org.json.JSONObject;
+
 import java.io.File;
+import java.io.UnsupportedEncodingException;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -43,6 +53,7 @@ public class OkhttpUtil {
 
     /**
      * get请求，可以传递参数
+     *
      * @param url：url
      * @param paramsMap：map集合，封装键值对参数
      * @param headerMap：map集合，封装请求头键值对
@@ -161,6 +172,7 @@ public class OkhttpUtil {
     public static void okHttpPostJson(Object tag, String url, String jsonStr, CallBackUtil callBack) {
         okHttpPostJson(tag, url, jsonStr, null, callBack);
     }
+
     /**
      * post请求，可以传递参数
      *
@@ -168,9 +180,9 @@ public class OkhttpUtil {
      * @param jsonStr：json格式的键值对参数
      * @param callBack：回调接口，onFailure方法在请求失败时调用，onResponse方法在请求成功后调用，这两个方法都执行在UI线程。
      */
-    public static void okHttpPostJsonHeaderMap(Object tag, String url, String jsonStr,String id ,CallBackUtil callBack) {
-        Map<String, String> headerMap=new HashMap<>();
-        headerMap.put("token",id);
+    public static void okHttpPostJsonHeaderMap(Object tag, String url, String jsonStr, String id, CallBackUtil callBack) {
+        Map<String, String> headerMap = new HashMap<>();
+        headerMap.put("token", id);
         okHttpPostJson(tag, url, jsonStr, headerMap, callBack);
     }
 
@@ -335,5 +347,46 @@ public class OkhttpUtil {
      */
     public static void okHttpGetBitmap(Object tag, String url, Map<String, String> paramsMap, CallBackUtil.CallBackBitmap callBack) {
         okHttpGet(tag, url, paramsMap, null, callBack);
+    }
+
+    /**
+     * paramsMap 加密
+     */
+    public static Map<String, String> getparamsMap(Map<String, String> paramsMap) {
+        Map<String, String> map1 = new HashMap<>();
+        try {
+            String strBase64 = Base64Util.encode(new JSONObject(paramsMap).toString());
+            String md5_android = md5(new JSONObject(paramsMap).toString());
+            LogUtil.e("HttpUtil", "strBase64-->" + strBase64);
+            LogUtil.e("HttpUtil", "md5_android-->" + md5_android);
+            map1.put("base64_android", strBase64);
+            map1.put("md5_android", md5_android);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return map1;
+    }
+
+    // MD5加密
+    public static String md5(String str) {
+        MessageDigest messageDigest = null;
+        try {
+            messageDigest = MessageDigest.getInstance("MD5");
+            messageDigest.reset();
+            messageDigest.update(str.getBytes("UTF-8"));
+        } catch (NoSuchAlgorithmException e) {
+            System.out.println("NoSuchAlgorithmException caught!");
+        } catch (UnsupportedEncodingException e) {
+            e.printStackTrace();
+        }
+        byte[] byteArray = messageDigest.digest();
+        StringBuffer md5StrBuff = new StringBuffer();
+        for (int i = 0; i < byteArray.length; i++) {
+            if (Integer.toHexString(0xFF & byteArray[i]).length() == 1)
+                md5StrBuff.append("0").append(Integer.toHexString(0xFF & byteArray[i]));
+            else
+                md5StrBuff.append(Integer.toHexString(0xFF & byteArray[i]));
+        }
+        return md5StrBuff.toString();
     }
 }
