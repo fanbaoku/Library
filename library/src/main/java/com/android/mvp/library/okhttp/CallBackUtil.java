@@ -72,7 +72,7 @@ public abstract class CallBackUtil<B> {
             final BaseBean baseBean = gson.fromJson(result, BaseBean.class);
             if (baseBean != null) {
                 final String msg = baseBean.getMsg();
-                if (TextUtils.isEmpty(baseBean.getStatus() )&&baseBean.getStatus().equals("1")) {
+                if (!TextUtils.isEmpty(baseBean.getStatus() )&&baseBean.getStatus().equals("1")) {
                     final String s = String.valueOf(baseBean.getData());
                     if (clazz == BaseBean.class) {
                         mMainHandler.post(new Runnable() {
