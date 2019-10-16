@@ -6,23 +6,23 @@ import android.os.Bundle;
 import android.view.MotionEvent;
 import android.view.inputmethod.InputMethodManager;
 
-import com.github.anzewei.parallaxbacklayout.ParallaxBack;
-import com.github.anzewei.parallaxbacklayout.ParallaxHelper;
-import com.github.anzewei.parallaxbacklayout.widget.ParallaxBackLayout;
+//import com.github.anzewei.parallaxbacklayout.ParallaxBack;
+//import com.github.anzewei.parallaxbacklayout.ParallaxHelper;
+//import com.github.anzewei.parallaxbacklayout.widget.ParallaxBackLayout;
 
 import androidx.annotation.Nullable;
 //import butterknife.ButterKnife;
 
-import static com.github.anzewei.parallaxbacklayout.widget.ParallaxBackLayout.EDGE_MODE_DEFAULT;
+//import static com.github.anzewei.parallaxbacklayout.widget.ParallaxBackLayout.EDGE_MODE_DEFAULT;
 
 
 /**
  * mvp activity 基类
  */
-@ParallaxBack(edge = ParallaxBack.Edge.LEFT, layout = ParallaxBack.Layout.PARALLAX)
+//@ParallaxBack(edge = ParallaxBack.Edge.LEFT, layout = ParallaxBack.Layout.PARALLAX)
 public abstract class BaseActivity<I, P extends BasePresenter<I>> extends Activity {
     private P presenter;
-    public ParallaxBackLayout layout;
+//    public ParallaxBackLayout layout;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -31,8 +31,8 @@ public abstract class BaseActivity<I, P extends BasePresenter<I>> extends Activi
         initData();
         init();
         setListener();
-        layout= ParallaxHelper.getParallaxBackLayout(this, true);
-        layout.setEdgeMode(EDGE_MODE_DEFAULT);//边缘滑动
+//        layout= ParallaxHelper.getParallaxBackLayout(this, true);
+//        layout.setEdgeMode(EDGE_MODE_DEFAULT);//边缘滑动
     }
 
     @Override

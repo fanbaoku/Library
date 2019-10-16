@@ -3,7 +3,7 @@ package com.android.mvp.library.application;
 import android.app.Application;
 import android.os.Handler;
 
-import com.github.anzewei.parallaxbacklayout.ParallaxHelper;
+//import com.github.anzewei.parallaxbacklayout.ParallaxHelper;
 
 public class BaseApplication extends Application {
 
@@ -22,7 +22,7 @@ public class BaseApplication extends Application {
         mMainThreadHandler = new Handler();
 //                mMainThread = Thread.currentThread();
         mMainThreadId = android.os.Process.myTid();
-        registerActivityLifecycleCallbacks(ParallaxHelper.getInstance());
+//        registerActivityLifecycleCallbacks(ParallaxHelper.getInstance());
     }
 
     // 对外暴露上下文

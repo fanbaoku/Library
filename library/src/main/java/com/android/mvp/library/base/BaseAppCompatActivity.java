@@ -7,25 +7,25 @@ import android.view.inputmethod.InputMethodManager;
 
 import com.android.mvp.library.utils.CleanLeakUtils;
 import com.android.mvp.library.utils.UIUtils;
-import com.github.anzewei.parallaxbacklayout.ParallaxBack;
-import com.github.anzewei.parallaxbacklayout.ParallaxHelper;
-import com.github.anzewei.parallaxbacklayout.widget.ParallaxBackLayout;
+//import com.github.anzewei.parallaxbacklayout.ParallaxBack;
+//import com.github.anzewei.parallaxbacklayout.ParallaxHelper;
+//import com.github.anzewei.parallaxbacklayout.widget.ParallaxBackLayout;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 //import butterknife.ButterKnife;
 
-import static com.github.anzewei.parallaxbacklayout.widget.ParallaxBackLayout.EDGE_MODE_DEFAULT;
+//import static com.github.anzewei.parallaxbacklayout.widget.ParallaxBackLayout.EDGE_MODE_DEFAULT;
 
 
 /**
  * mvp activity 基类
  */
-@ParallaxBack(edge = ParallaxBack.Edge.LEFT, layout = ParallaxBack.Layout.PARALLAX)
+//@ParallaxBack(edge = ParallaxBack.Edge.LEFT, layout = ParallaxBack.Layout.PARALLAX)
 public abstract class BaseAppCompatActivity<I, P extends BasePresenter<I>> extends
         AppCompatActivity {
     private P presenter;
-    public ParallaxBackLayout layout;
+//    public ParallaxBackLayout layout;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -34,8 +34,8 @@ public abstract class BaseAppCompatActivity<I, P extends BasePresenter<I>> exten
 //        ButterKnife.bind(this);
         init();
         setListener();
-        layout = ParallaxHelper.getParallaxBackLayout(this, true);
-        layout.setEdgeMode(EDGE_MODE_DEFAULT);//边缘滑动
+//        layout = ParallaxHelper.getParallaxBackLayout(this, true);
+//        layout.setEdgeMode(EDGE_MODE_DEFAULT);//边缘滑动
     }
 
     @Override
